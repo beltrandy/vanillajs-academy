@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Convert Weight Library - Constructor</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<style type="text/css">
+			body {
+				margin: 0 auto;
+				max-width: 40em;
+				width: 88%;
+			}
+		</style>
+	</head>
+	<body>
+
+		<h1>Convert Weight Library - Constructor</h1>
+
+		<p>All of the magic here happens in the console.</p>
+
+
+		<script>
+			
+            let Convert = ( function () {
+
+                function Constructor (weight) {
+
+                    this.weight = weight;
+
+                }
+
+                Constructor.prototype.inGrams = function (weight) {
+
+                    return this.weight / 1000;
+
+                };
+
+                Constructor.prototype.inKg = function () {
+
+                    return (this.weight / 1000) / 1000;
+
+                };
+
+                Constructor.prototype.inMg = function (weight) {
+
+                    return this.weight;
+
+                };
+
+                return Constructor;
+
+            })();
+
+            let bird = new Convert(4000);
+
+            let kgs = bird.inKg();
+
+            console.log(kgs);
+
+            let grams = bird.inGrams();
+
+            console.log(grams);
+
+            let mgs = bird.inMg();
+
+            console.log(mgs);
+
+		</script>
+	</body>
+</html>
