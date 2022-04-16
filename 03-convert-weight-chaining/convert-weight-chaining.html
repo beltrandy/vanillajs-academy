@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Convert Weight Library - Chaining</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<style type="text/css">
+			body {
+				margin: 0 auto;
+				max-width: 40em;
+				width: 88%;
+			}
+		</style>
+	</head>
+	<body>
+
+		<h1>Convert Weight Library - Chaining</h1>
+
+		<p>All of the magic here happens in the console.</p>
+
+
+		<script>
+			let Convert = (function () {
+
+				/**
+				 * The Constructor object
+				 * @param {Number} weight The weight
+				 */
+				function Constructor (weight) {
+					this.weight = weight;
+				}
+
+				/**
+				 * Get weight in milligrams
+				 * @return {Number} The weight in milligrams
+				 */
+				Constructor.prototype.inMg = function () {
+					return this.weight;
+				};
+
+				/**
+				 * Get weight in grams
+				 * @return {Number} The weight in grams
+				 */
+				Constructor.prototype.inGrams = function () {
+					return this.weight / 1000;
+				};
+
+				/**
+				 * Get weight in kilograms
+				 * @return {Number} The weight in kilograms
+				 */
+				Constructor.prototype.inKg = function () {
+					return this.weight / 1000 / 1000;
+				};
+
+                Constructor.prototype.addGrams = function (amount) {
+                    this.weight = this.weight + (amount * 1000);
+                    return this;
+                };
+
+                Constructor.prototype.addMg = function (amount) {
+                    this.weight = this.weight + amount;
+                    return this;
+                };
+
+                Constructor.prototype.addKg = function (amount) {
+                    this.weight = this.weight + (amount * 1000) * 1000;
+                    return this;
+                };
+
+				return Constructor;
+
+			})();
+
+			let hummingbird = new Convert(4000);
+
+            let afterEating = hummingbird.addMg(150).addGrams(1).inGrams();
+
+            console.log(afterEating);
+		</script>
+	</body>
+</html>
